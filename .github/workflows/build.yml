@@ -22,11 +22,19 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: docker@20.10.16
 
       # Runs a single command using the runners shell
+      - name: Checkout
+        uses: actions/checkout@v3
+
       - name: Build image
-        run: docker build -t loconox/latexcv .
+        uses: cubetiq/starter-docker-actions@main
+        with:
+          shell: bash
+          run: docker build -t loconox/latexcv .
+
       - name: Create PDF
-        run: docker run -v `pwd`:/data loconox/latexcv lualatex /data/cv_jeremie_libeau.tex
+        uses: cubetiq/starter-docker-actions@main
+        with:
+          shell: bash
+          run: docker run -v `pwd`:/data loconox/latexcv lualatex /data/cv_jeremie_libeau.tex
