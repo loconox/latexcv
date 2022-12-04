@@ -1,9 +1,8 @@
-FROM ubuntu:xenial
+FROM ubuntu:jammy
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update -q \
-    && apt-get install -qy build-essential wget libfontconfig1 \
-    && rm -rf /var/lib/apt/lists/*
+    && apt-get install -qy build-essential wget libfontconfig1
 
 # Install TexLive with scheme-basic
 RUN wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz; \
@@ -16,10 +15,10 @@ RUN wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz; \
 
 ENV PATH="/usr/local/texlive/2022/bin/x86_64-linux:${PATH}"
 
-ENV HOME /data
-WORKDIR /data
-
 # Install latex packages
 RUN tlmgr install latexmk xifthen ifmtarg gillius xkeyval fontspec moresize fontawesome5 luatexbase paracol multirow wrapfig float pgf transparent
+
+ENV HOME /data
+WORKDIR /data
 
 VOLUME ["/data"]
