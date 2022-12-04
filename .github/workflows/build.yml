@@ -37,3 +37,8 @@ jobs:
 
       - name: Create PDF
         run: docker run -v `pwd`:/data loconox/latexcv lualatex /data/cv_jeremie_libeau.tex
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: CV
+          path: cv_jeremie_libeau.pdf
