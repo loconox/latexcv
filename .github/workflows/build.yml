@@ -36,5 +36,4 @@ jobs:
           tags: loconox/latexcv:latest
 
       - name: Create PDF
-        with:
-          run: docker run -v `pwd`:/data loconox/latexcv lualatex /data/cv_jeremie_libeau.tex
+        run: docker run -v `pwd`:/data loconox/latexcv lualatex /data/cv_jeremie_libeau.tex
