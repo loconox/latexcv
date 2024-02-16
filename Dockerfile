@@ -13,10 +13,11 @@ RUN wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz; \
     rm -r /install-tl-unx; \
 	rm install-tl-unx.tar.gz
 
-ENV PATH="/usr/local/texlive/2022/bin/x86_64-linux:${PATH}"
+ENV PATH="/usr/local/texlive/2023/bin/x86_64-linux:${PATH}"
 
 # Install latex packages
-RUN tlmgr install latexmk xifthen ifmtarg gillius xkeyval fontspec moresize fontawesome5 luatexbase paracol multirow wrapfig float pgf transparent
+RUN tlmgr install latexmk xifthen ifmtarg gillius xkeyval fontspec moresize fontawesome5 luatexbase paracol multirow wrapfig float pgf transparent \
+    etoolbox
 
 ENV HOME /data
 WORKDIR /data
