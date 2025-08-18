@@ -1,4 +1,5 @@
 FROM ubuntu:jammy
+ARG DATE
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update -q \
@@ -13,7 +14,7 @@ RUN wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz; \
     rm -r /install-tl-unx; \
 	rm install-tl-unx.tar.gz
 
-ENV PATH="/usr/local/texlive/2023/bin/x86_64-linux:${PATH}"
+ENV PATH "/usr/local/texlive/${DATE}/bin/x86_64-linux:${PATH}"
 
 # Install latex packages
 RUN tlmgr install latexmk xifthen ifmtarg gillius xkeyval fontspec moresize fontawesome5 luatexbase paracol multirow wrapfig float pgf transparent \
