@@ -328,8 +328,8 @@
 \newcommand{\iconnewemail}[5]{ 						%icon with email link
 	\vcenteredhbox{\iconnew{#1}{#2}{#5}} \href{mailto:Jérémie Libeau <#4>?subject=Votre profil nous intéresse !}{\textcolor{#5}{#3}}
 }
-\newcommand{\iconnewtel}[5]{ 						%icon with email link
-	\vcenteredhbox{\iconnew{#1}{#2}{#5}} \href{tel:#3}{\textcolor{#5}{#4}}
+\newcommand{\icontel}[5]{ 						%icon with email link
+	\vcenteredhbox{\icon{#1}{#2}{#5}} \href{tel:#3}{\textcolor{#5}{#4}}
 }
 \newcommand{\iconcustomtext}[4]{
 	\vcenteredhbox{\makebox(#2, #2){\includegraphics[width=#2px]{#1}}} \vcenteredhbox{\textcolor{#4}{#3}}
@@ -403,7 +403,7 @@
 %----------------------------------------------------------------------------------------
 \cvsection{Statut}
 
-Tech lead, freelance, full remote.
+Tech lead | développeur backend -- freelance.
 
 \vspace{12pt}
 
@@ -510,9 +510,10 @@ Tech lead, freelance, full remote.
 \begin{metasection}{Contact}
 
     \iconnewtext{F3C5}{12}{Trédarzec, Bretagne}{white}\\[6pt]
-	\iconnewtel{F1D8}{12}{0687463241}{06 87 46 32 41}{white}\\[6pt]
+	\icontel{Mobile}{12}{0687463241}{06 87 46 32 41}{white}\\[6pt]
     \iconnewemail{F1D8}{12}{job@jeremielibeau.fr}{job@jeremielibeau.fr}{white}\\[6pt]
-	\iconhref{Github}{12}{Github}{https://github.com/loconox/}{white}\\[6pt]
+    \iconhref{Globe}{12}{https://jeremielibeau.fr/}{https://jeremielibeau.fr/}{white}\\[6pt]
+    \iconhref{Github}{12}{https://github.com/loconox/}{https://github.com/loconox/}{white}\\[6pt]
 
 \end{metasection}
 
