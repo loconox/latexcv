@@ -36,17 +36,30 @@ jobs:
           tags: loconox/latexcv:latest
 
       - name: Create PDF
-        run: docker run -v `pwd`:/data loconox/latexcv lualatex /data/cv_jeremie_libeau.tex
+        run: make all
 
       - uses: actions/upload-artifact@v4
         with:
-          name: CV
-          path: cv_jeremie_libeau.pdf
+          name: CV_en
+          path: cv_jeremie_libeau_en.pdf
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: CV_fr
+          path: cv_jeremie_libeau_fr.pdf
 
       - uses: djnicholson/release-action@v2.11
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          release-name: 'Dernier CV'
+          release-name: 'CV'
           tag-name: 'latest'
-          asset-name: 'cv_jeremie_libeau.pdf'
-          file: 'cv_jeremie_libeau.pdf'
+          asset-name: 'cv_jeremie_libeau_en.pdf'
+          file: 'cv_jeremie_libeau_en.pdf'
+
+      - uses: djnicholson/release-action@v2.11
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          release-name: 'CV'
+          tag-name: 'latest'
+          asset-name: 'cv_jeremie_libeau_fr.pdf'
+          file: 'cv_jeremie_libeau_fr.pdf'
