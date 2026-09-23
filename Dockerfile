@@ -1,5 +1,5 @@
 FROM ubuntu:latest
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update -q \
     && apt-get install -qy build-essential wget libfontconfig1
@@ -13,13 +13,13 @@ RUN wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz; \
     rm -r /install-tl-unx; \
 	rm install-tl-unx.tar.gz
 
-ENV PATH "/usr/local/texlive/2026/bin/x86_64-linux:${PATH}"
+ENV PATH="/usr/local/texlive/2026/bin/x86_64-linux:${PATH}"
 
 # Install latex packages
 RUN tlmgr install latexmk xifthen ifmtarg gillius xkeyval fontspec moresize fontawesome7 luatexbase paracol multirow wrapfig float pgf transparent \
     etoolbox
 
-ENV HOME /data
+ENV HOME=/data
 WORKDIR /data
 
 VOLUME ["/data"]
