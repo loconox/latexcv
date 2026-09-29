@@ -2,7 +2,7 @@ CURRENT_UID := $(shell id -u)
 
 .PHONY:all
 
-all: image cv_jeremie_libeau_en.pdf cv_jeremie_libeau_fr.pdf
+all: clean image cv_jeremie_libeau_en.pdf cv_jeremie_libeau_fr.pdf
 
 cv_jeremie_libeau_en.pdf:
 	docker run -v `pwd`:/data --user $(CURRENT_UID) loconox/latexcv lualatex /data/cv_jeremie_libeau_en.tex
