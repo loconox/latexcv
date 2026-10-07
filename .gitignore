@@ -37,3 +37,5 @@ glossary.ist
 .idea/
 
 *.pdf
+!images/*.pdf
+.texlive*/

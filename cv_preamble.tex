@@ -331,6 +331,9 @@
 \newcommand{\iconnewhref}[5]{ 						%icon with website url
 	\vcenteredhbox{\iconnew{#1}{#2}{#5}} \href{#4}{\textcolor{#5}{#3}}
 }
+\newcommand{\iconcustomhref}[5]{ 						%icon with website url
+	\vcenteredhbox{\makebox(#2, #2){\includegraphics[width=#2px]{#1}}} \href{#4}{\textcolor{#5}{#3}}
+}
 \newcommand{\iconnewemail}[5]{ 						%icon with email link
 	\vcenteredhbox{\iconnew{#1}{#2}{#5}} \href{mailto:Jérémie Libeau <#4>?subject=\emailSubject}{\textcolor{#5}{#3}}
 }
