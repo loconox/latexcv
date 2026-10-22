@@ -46,6 +46,9 @@
 % provides \isempty test
 \usepackage{xifthen}
 
+% provides \NewDocumentCommand and \IfValueT for optional macro arguments
+\usepackage{xparse}
+
 %----------------------------------------------------------------------------------------
 %	FONT
 %----------------------------------------------------------------------------------------
@@ -248,9 +251,13 @@
 % param 1:	event time i.e. 2014 or 2011-2014 etc.
 % param 2:	event name (what did you do?)
 % param 3:	institution (where did you work / study)
-% param 4:	list of paragraphs outlining your contributions, see example usage below
+% param 4:	location
+% param 5:	(optional, [...]) description paragraph
+% param 6:	(optional, <...>) list of technologies, shown as chips when \cvtagstrue
+% param 7:	list of paragraphs outlining your contributions, see example usage below
 %
-\newcommand{\cvevent}[5]
+\newif\ifcvtags
+\NewDocumentCommand{\cvevent}{mmmmod<>m}
 {
     \hspace{3pt}
     \parbox{1\linewidth-3pt}{
@@ -265,9 +272,28 @@
     \vspace{0pt}
     \textcolor{softcol}{\hrule}
     \vspace{6pt}
-    \cvlist {#5}
+    \IfValueT{#5}{\textcolor{black}{#5}\vspace{6pt}\par}
+    \ifcvtags
+        \IfValueTF{#6}{\cvtags{#6}\vspace{6pt}}{\cvlist{#7}}
+    \else
+        \cvlist{#7}
+    \fi
     \vspace{-6pt}
     }
+}
+
+% a single technology chip
+\newcommand{\cvtag}[1]{%
+    \tikz[baseline=(t.base)]\node[fill=softcol!70, text=sectcol!80!black,
+        rounded corners=2pt, inner sep=2pt, font=\footnotesize] (t) {\strut #1};%
+}
+
+% formats a list of technologies as chips for use in `\cvevent`
+% param 1: a list of technologies
+\newcommand{\cvtags}[1]{%
+    \parbox{1\linewidth}{\raggedright
+        \foreach \tag in {#1}{\cvtag{\tag}\hspace{3pt plus 1pt}}
+    }%
 }
 
 % formats a list of strings with variable length for use in `\cvevent`
